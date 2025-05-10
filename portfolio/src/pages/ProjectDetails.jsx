@@ -22,6 +22,7 @@ const ProjectDetails = () => {
       } catch (err) {
         setError("Project not found or failed to load.");
         setLoading(false);
+        console.log(err);
       }
     };
 
