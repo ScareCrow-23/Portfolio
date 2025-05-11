@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useProjects } from "../context/ProjectContext"; // Make sure this matches the actual filename
+import { useProjects } from "../context/ProjectContext";
 import SingleProjectCard from "../components/SingleProjectCard";
 
 const Projects = () => {
-  const { projects, loading, error } = useProjects(); // Also consume loading and error states
+  const { projects, loading, error } = useProjects();
 
   const featuredProjects = projects.slice(0, 3);
 
@@ -15,7 +15,6 @@ const Projects = () => {
           Featured Projects
         </h2>
 
-        {/* Handle loading and error states */}
         {loading ? (
           <p className="text-center text-lg">Loading projects...</p>
         ) : error ? (
@@ -28,14 +27,16 @@ const Projects = () => {
               ))}
             </div>
 
-            <div className="mt-12 text-center">
-              <Link
-                to="/projects"
-                className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-[#ff5f5f] to-[#00d2ff] text-white font-semibold hover:opacity-90 transition"
-              >
-                View More Projects
-              </Link>
-            </div>
+            {projects.length > 3 && (
+              <div className="mt-12 text-center">
+                <Link
+                  to="/projects"
+                  className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-[#ff5f5f] to-[#00d2ff] text-white font-semibold hover:opacity-90 transition"
+                >
+                  View More Projects
+                </Link>
+              </div>
+            )}
           </>
         )}
       </div>
